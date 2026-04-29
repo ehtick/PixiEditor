@@ -1474,5 +1474,7 @@
   "LIQUID_GLASS_EXAMPLE": "Liquid Glass",
   "INTRO_EXAMPLE": "Intro",
   "FIRE_PIXEL_EXAMPLE": "Pixel Fire",
-  "FOAM_BRUSH": "Foam"
+  "FOAM_BRUSH": "Foam",
+  "EXPORT_CATEGORY": "Export",
+  "FOLLOW_SYSTEM_LANG": "Follow system"
 }
