@@ -81,7 +81,8 @@ internal partial class KeyCombinationBox : UserControl
 
         if (GetModifier(e.Key) is { } modifier)
         {
-            currentCombination = currentCombination with { Modifiers = currentCombination.Modifiers ^ modifier };
+            currentCombination = currentCombination with { Modifiers = currentCombination.Modifiers ^ modifier, Key = e.Key};
+            KeyCombination = currentCombination;
         }
         else
         {
