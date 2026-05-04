@@ -798,6 +798,11 @@ internal class FileViewModel : SubViewModel<ViewModelMain>
                 var result = await Exporter.TrySaveWithDialog(document, config, null);
                 if (result.Result.ResultType == SaveResultType.Cancelled)
                     return false;
+                if(string.IsNullOrEmpty(result.Path))
+                {
+                    return false;
+                }
+
                 if (result.Result.ResultType != SaveResultType.Success)
                 {
                     ShowSaveError(result.Result);
