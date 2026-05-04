@@ -82,7 +82,7 @@ public abstract class RenderNode : Node, IHighDpiRenderNode
                 surface.DrawSurface(target.Surface, 0, 0);
             }
 
-            if (RendersInAbsoluteCoordinates)
+            if (!RendersInAbsoluteCoordinates)
             {
                 surface.Restore();
             }
