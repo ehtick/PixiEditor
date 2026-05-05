@@ -822,7 +822,7 @@ internal class FileViewModel : SubViewModel<ViewModelMain>
             else
             {
                 ExportConfig config = new ExportConfig(document.SizeBindable);
-                if (string.Equals(Path.GetExtension(document.FullFilePath), ".pixi", StringComparison.OrdinalIgnoreCase) && !confirmedOverwritePaths.Contains(document.FullFilePath))
+                if (!string.Equals(Path.GetExtension(document.FullFilePath), ".pixi", StringComparison.OrdinalIgnoreCase) && !confirmedOverwritePaths.Contains(document.FullFilePath))
                 {
                     var overwrite = await ConfirmationDialog.Show(new LocalizedString("CONFIRM_OVERWRITE_QUESTION", Path.GetExtension(document.FullFilePath)), "CONFIRM_OVERWRITE_TITLE");
                     if (overwrite == ConfirmationType.Canceled)
