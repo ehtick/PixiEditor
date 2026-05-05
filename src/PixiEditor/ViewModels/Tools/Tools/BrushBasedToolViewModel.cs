@@ -183,6 +183,14 @@ internal class BrushBasedToolViewModel : ToolViewModel, IBrushToolHandler
         {
             if (blackboardVariable is VariableViewModel { IsExposedBindable: true } varVm)
             {
+                foreach (var dynamicDefaultSetting in dynamicDefaultSettings)
+                {
+                    if (dynamicDefaultSetting.Value.TryGetValue(varVm.Name, out var defaultValue))
+                    {
+                        SetDefaultValue(dynamicDefaultSetting.Key, defaultValue, varVm.SettingView, varVm.Name);
+                    }
+                }
+
                 Toolbar.AddSetting(varVm.SettingView);
                 brushShapeSettings.Add(varVm.SettingView);
             }

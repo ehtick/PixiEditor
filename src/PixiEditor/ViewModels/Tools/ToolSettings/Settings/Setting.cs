@@ -85,7 +85,24 @@ internal abstract class Setting : ObservableObject
 
     public object Value
     {
-        get => hasOverwrittenValue ? overwrittenValue : toolsetValues.GetValueOrDefault(currentToolset, null);
+        get
+        {
+            var raw = hasOverwrittenValue ? overwrittenValue : toolsetValues.GetValueOrDefault(currentToolset, null);
+            if (raw is JsonElement jsonElement)
+            {
+                try
+                {
+                    raw = jsonElement.Deserialize(GetSettingType());
+                }
+                catch
+                {
+                    Debug.WriteLine($"Failed to deserialize setting {Name} value from JSON.");
+                    return null;
+                }
+            }
+
+            return AdjustValue(raw);
+        }
         set
         {
             var old = toolsetValues.GetValueOrDefault(currentToolset, null);
