@@ -31,6 +31,9 @@ internal class VariableViewModel : ViewModelBase, IVariableHandler
     private object value;
     private string name;
     private bool isExposed = true;
+    private string? unit;
+    private double min;
+    private double max;
 
     public Type Type
     {
@@ -84,27 +87,42 @@ internal class VariableViewModel : ViewModelBase, IVariableHandler
         this.name = name;
         this.value = value;
         this.internals = internals;
+        this.unit = unit;
+        this.min = min;
+        this.max = max;
 
-        SettingView = CreateSettingFromType(this.type, unit, min, max, name);
+        SettingView = CreateSettingView(name, value, unit, min, max, internals);
 
-        SettingView.Label = SettingView.HasIcon ? null : name;
-        SettingView.Value = AdjustValueForSetting(value);
+        RemoveCommand = new RelayCommand(() =>
+        {
+            internals.ActionAccumulator.AddFinishedActions(
+                new RemoveBlackboardVariable_Action(Name));
+        });
+    }
 
-        SettingView.ValueChanged += (sender, args) =>
+    private Setting CreateSettingView(string name, object? value, string? unit, double min, double max,
+        DocumentInternalParts internals)
+    {
+        var view = CreateSettingFromType(this.type, unit, min, max, name);
+
+        view.Label = view.HasIcon ? null : name;
+        view.Value = AdjustValueForSetting(value);
+
+        view.ValueChanged += (sender, args) =>
         {
             if (suppressValueChange)
                 return;
 
-            if (SettingView.MergeChanges)
+            if (view.MergeChanges)
             {
-                var adjustedValue = AdjustValueForBlackboard(SettingView.Value);
+                var adjustedValue = AdjustValueForBlackboard(view.Value);
                 internals.ActionAccumulator.AddActions(
                     new SetBlackboardVariable_Action(Name, adjustedValue, adjustedValue?.GetType() ?? typeof(object),
                         min, max, unit, IsExposedBindable));
             }
             else
             {
-                var adjustedValue = AdjustValueForBlackboard(SettingView.Value);
+                var adjustedValue = AdjustValueForBlackboard(view.Value);
                 internals.ActionAccumulator.AddFinishedActions(
                     new SetBlackboardVariable_Action(Name, adjustedValue, adjustedValue?.GetType() ?? typeof(object),
                         min, max, unit, IsExposedBindable),
@@ -112,17 +130,13 @@ internal class VariableViewModel : ViewModelBase, IVariableHandler
             }
         };
 
-        SettingView.MergeChangesEnded += () =>
+        view.MergeChangesEnded += () =>
         {
             internals.ActionAccumulator.AddFinishedActions(
                 new EndSetBlackboardVariable_Action());
         };
 
-        RemoveCommand = new RelayCommand(() =>
-        {
-            internals.ActionAccumulator.AddFinishedActions(
-                new RemoveBlackboardVariable_Action(Name));
-        });
+        return view;
     }
 
     protected object AdjustValueForBlackboard(object value)
