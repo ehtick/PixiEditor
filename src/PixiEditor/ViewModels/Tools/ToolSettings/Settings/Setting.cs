@@ -75,6 +75,7 @@ internal abstract class Setting : ObservableObject
     protected bool hasOverwrittenExposed;
 
     private bool mergeChanges;
+    private Dictionary<JsonElement, object> deserializedJsonCache = new Dictionary<JsonElement, object>();
 
     protected Setting(string name)
     {
@@ -88,11 +89,22 @@ internal abstract class Setting : ObservableObject
         get
         {
             var raw = hasOverwrittenValue ? overwrittenValue : toolsetValues.GetValueOrDefault(currentToolset, null);
-            if (raw is JsonElement jsonElement)
+            if (raw == null)
+            {
+                return null;
+            }
+
+            if (raw is JsonElement jsonElement && deserializedJsonCache.TryGetValue(jsonElement, out object cached))
+            {
+                return AdjustValue(cached);
+            }
+
+            if (raw is JsonElement newJsonElement)
             {
                 try
                 {
-                    raw = jsonElement.Deserialize(GetSettingType());
+                    raw = newJsonElement.Deserialize(GetSettingType());
+                    deserializedJsonCache[newJsonElement] = raw;
                 }
                 catch
                 {

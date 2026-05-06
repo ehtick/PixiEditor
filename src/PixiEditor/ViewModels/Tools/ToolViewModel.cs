@@ -258,7 +258,7 @@ internal abstract class ToolViewModel : ObservableObject, IToolHandler
                     var foundSetting = TryGetSettingByName(settingName, setting);
                     if (foundSetting is null)
                     {
-                        if(dynamicDefaultSettings.TryGetValue(toolset, out var toolsetSettings))
+                        if (dynamicDefaultSettings.TryGetValue(toolset, out var toolsetSettings))
                         {
                             toolsetSettings[settingName] = defaultValue;
                         }
@@ -269,6 +269,7 @@ internal abstract class ToolViewModel : ObservableObject, IToolHandler
                                 [settingName] = defaultValue
                             };
                         }
+
                         continue;
                     }
 
@@ -326,7 +327,8 @@ internal abstract class ToolViewModel : ObservableObject, IToolHandler
         }
     }
 
-    protected static void SetDefaultValue(IToolSetHandler toolset, object defaultValue, Setting foundSetting, string settingName)
+    protected static void SetDefaultValue(IToolSetHandler toolset, object defaultValue, Setting foundSetting,
+        string settingName)
     {
         if (defaultValue is JsonElement jsonElement)
         {
@@ -341,9 +343,9 @@ internal abstract class ToolViewModel : ObservableObject, IToolHandler
                     $"Failed to deserialize default value for setting {settingName} in toolset {toolset.Name}");
 #endif
             }
-
-            foundSetting.SetDefaultValue(defaultValue, toolset.Name);
         }
+
+        foundSetting.SetDefaultValue(defaultValue, toolset.Name);
     }
 
     private Setting? TryGetSettingByName(string settingName, KeyValuePair<string, object> setting)
@@ -418,7 +420,10 @@ internal abstract class ToolViewModel : ObservableObject, IToolHandler
 
         var settingName = settingConfig.Key.Replace("Expose", string.Empty);
 
-        if (settingConfig.Value is bool value || settingConfig.Value is JsonElement { ValueKind: JsonValueKind.True or JsonValueKind.False } jsonElement && (value = jsonElement.GetBoolean()))
+        if (settingConfig.Value is bool value || settingConfig.Value is JsonElement
+            {
+                ValueKind: JsonValueKind.True or JsonValueKind.False
+            } jsonElement && (value = jsonElement.GetBoolean()))
         {
             expose = value;
             return true;

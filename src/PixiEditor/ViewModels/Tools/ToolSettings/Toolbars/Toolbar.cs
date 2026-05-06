@@ -99,14 +99,9 @@ internal abstract class Toolbar : ObservableObject, IToolbar
 
     public void SaveLocalValues()
     {
-        localValues = Settings.ToDictionary(x => x.Name, x => x.Value);
-        foreach (var setting in localValues)
-        {
-            if(setting.Value is ICloneable cloneable)
-            {
-                localValues[setting.Key] = cloneable.Clone();
-            }
-        }
+        localValues = Settings.ToDictionary(
+            x => x.Name,
+            x => x.Value is ICloneable cloneable ? cloneable.Clone() : x.Value);
     }
 
     public void LoadLocalValues()
