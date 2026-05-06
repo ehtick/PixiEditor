@@ -5,6 +5,7 @@ using System.Reactive.Linq;
 using PixiEditor.Models.Controllers;
 using PixiEditor.Models.DocumentModels;
 using PixiEditor.Models.Handlers;
+using PixiEditor.UI.Common.Localization;
 
 namespace PixiEditor.ViewModels.Document;
 
@@ -21,7 +22,7 @@ internal class CelGroupViewModel : CelViewModel, ICelGroupHandler
         ? Children.Max(x => x.StartFrameBindable + x.DurationBindable) - StartFrameBindable
         : 0);
 
-    public string LayerName => Document.StructureHelper.Find(LayerGuid).NodeNameBindable;
+    public string LayerName => Document.StructureHelper.Find(LayerGuid)?.NodeNameBindable ?? new LocalizedString("MISSING_LAYER_NODE_ERROR");
 
     public bool IsGroupSelected => Document?.SelectedStructureMember?.Id == LayerGuid;
 
