@@ -272,7 +272,8 @@
             "DefaultToolSize": 20
           }
         },
-        "Brightness"
+        "Brightness",
+        "Zoom"
       ]
     }
   ]
