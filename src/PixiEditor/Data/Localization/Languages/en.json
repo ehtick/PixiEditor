@@ -1495,5 +1495,8 @@
   "NEW_ITEM": "NEW",
   "FEATURED_EXTENSIONS_TITLE": "Featured Extensions",
   "ALL_EXTENSIONS_TITLE": "All Extensions",
-  "EXTENSIONS_INFO": "PixiEditor is 100% community funded, by purchasing extensions you directly support the development."
+  "EXTENSIONS_INFO": "PixiEditor is 100% community funded, by purchasing extensions you directly support the development.",
+  "SMUDGE_TOOL_ACTION_DISPLAY_DEFAULT": "Click and drag on the canvas to smudge.",
+  "BLUR_TOOL_ACTION_DISPLAY_DEFAULT": "Click and drag on the canvas to blur.",
+  "SHARPEN_TOOL_ACTION_DISPLAY_DEFAULT": "Click and drag on the canvas to sharpen."
 }
