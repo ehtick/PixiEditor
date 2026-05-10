@@ -13,6 +13,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-          cache: 'pip'
       - name: Check if Changelog for version matches
         run: python .github/workflows/changelog/check_changelog.py
