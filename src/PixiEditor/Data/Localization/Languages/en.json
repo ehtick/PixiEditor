@@ -1345,6 +1345,8 @@
   "RESET_TRANSFORM": "Reset Transform",
   "RESET_TRANSFORM_DESCRIPTIVE": "Reset the transform of the layer.",
   "CONTIGUOUS_LABEL": "Contiguous",
+  "OPEN_PATH_AS_REFERENCE_LAYER": "As reference: {0}",
+  "OPEN_PATH_AS_NESTED_DOCUMENT": "As element: {0}",
   "DENSITY": "Density",
   "IMPORT_BRUSH_DESCRIPTIVE": "Import brush from .pixi file.",
   "OPEN_BRUSHES_FOLDER_DESCRIPTIVE": "Open the folder where custom brushes are stored.",
@@ -1479,10 +1481,8 @@
   "TARGET_OVERSAMPLE": "Oversample",
   "BLUR_TOOL": "Blur",
   "BLUR_TOOL_TOOLTIP": "Blur parts of your image ({0}).",
-  "BLUR_TOOL_ACTION_DISPLAY": "Click and drag on the canvas to blur.",
   "SHARPEN_TOOL": "Sharpen",
   "SHARPEN_TOOL_TOOLTIP": "Sharpen parts of your image ({0}).",
-  "SHARPEN_TOOL_ACTION_DISPLAY": "Click and drag on the canvas to sharpen.",
   "VELOCITY": "Velocity",
   "ADJUSTMENTS_TOOLSET": "Adjustments",
   "SMUDGE_TOOL": "Smudge",
@@ -1495,5 +1495,8 @@
   "NEW_ITEM": "NEW",
   "FEATURED_EXTENSIONS_TITLE": "Featured Extensions",
   "ALL_EXTENSIONS_TITLE": "All Extensions",
-  "EXTENSIONS_INFO": "PixiEditor is 100% community funded, by purchasing extensions you directly support the development."
+  "EXTENSIONS_INFO": "PixiEditor is 100% community funded, by purchasing extensions you directly support the development.",
+  "SMUDGE_TOOL_ACTION_DISPLAY_DEFAULT": "Click and drag on the canvas to smudge.",
+  "BLUR_TOOL_ACTION_DISPLAY_DEFAULT": "Click and drag on the canvas to blur.",
+  "SHARPEN_TOOL_ACTION_DISPLAY_DEFAULT": "Click and drag on the canvas to sharpen."
 }
