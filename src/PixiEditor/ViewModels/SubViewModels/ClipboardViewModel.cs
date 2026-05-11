@@ -105,6 +105,9 @@ internal class ClipboardViewModel : SubViewModel<ViewModelMain>
                 : ClipboardController.GetImage(new[] { new ImportedObject(data) }).Result).FirstOrDefault();
         using var surface = imageData.Image;
 
+        if (surface is null)
+            return;
+
         var bitmap = imageData.Image.ToWriteableBitmap();
 
         byte[] pixels = bitmap.ExtractPixels();
