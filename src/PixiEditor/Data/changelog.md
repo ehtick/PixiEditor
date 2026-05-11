@@ -9,6 +9,8 @@ Date: `10.05.2026`
 - Added new toolset "Adjustments" with Blur Tool, Sharpen Tool, Smudge Tool and Brightness Tool
 - Added Velocity Output to Stroke Info Node
 - Added "Place Element" to file paths in the command search (by [CPK](https://github.com/CPKreu))
+- Added Oversample input in Brush Output Node,
+- Added Sample Size output to Stroke Info Node
 
 ## Improvements
 
