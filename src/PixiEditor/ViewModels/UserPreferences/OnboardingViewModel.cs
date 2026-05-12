@@ -147,22 +147,29 @@ internal partial class OnboardingViewModel : PixiObservableObject
             firstToolSet.IsSelected = true;
         }
 
-        ExtensionsFetching = true;
-        Task.Run(async () =>
+        if (string.Equals(IPlatform.Current.Id, "steam", StringComparison.CurrentCultureIgnoreCase))
         {
-            var extViewModel = ViewModelMain.Current.ExtensionsSubViewModel.ExtensionManager;
-            await extViewModel.FetchAvailableExtensions();
-            var suggestedExtensions = extViewModel.FeaturedExtensions;
-            Dispatcher.UIThread.Post(() =>
+            AllFormSteps.RemoveAt(4);
+        }
+        else
+        {
+            ExtensionsFetching = true;
+            Task.Run(async () =>
             {
-                foreach (var content in suggestedExtensions.Take(3))
+                var extViewModel = ViewModelMain.Current.ExtensionsSubViewModel.ExtensionManager;
+                await extViewModel.FetchAvailableExtensions();
+                var suggestedExtensions = extViewModel.FeaturedExtensions;
+                Dispatcher.UIThread.Post(() =>
                 {
-                    SuggestedExtensions.Add(content);
-                }
+                    foreach (var content in suggestedExtensions.Take(3))
+                    {
+                        SuggestedExtensions.Add(content);
+                    }
 
-                ExtensionsFetching = false;
+                    ExtensionsFetching = false;
+                });
             });
-        });
+        }
     }
 
     [RelayCommand]
