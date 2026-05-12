@@ -44,7 +44,7 @@ public class AvailableExtension
     [JsonPropertyName("releaseDate")]
     public DateTime ReleaseDate { get; set; }
 
-    public List<ExtVersion> Versions { get; set; }
+    public List<ExtVersion> Versions { get; set; } = new List<ExtVersion>();
 }
 
 [Serializable]
