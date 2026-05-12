@@ -6,7 +6,6 @@
              xmlns:tools1="clr-namespace:PixiEditor.Views.Main.Tools"
              xmlns:ui="clr-namespace:PixiEditor.Extensions.UI;assembly=PixiEditor.Extensions"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
-             xmlns:viewModels="clr-namespace:PixiEditor.ViewModels"
              xmlns:xaml="clr-namespace:PixiEditor.Models.Commands.XAML"
              xmlns:localization="clr-namespace:PixiEditor.UI.Common.Localization;assembly=PixiEditor.UI.Common"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
