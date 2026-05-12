@@ -312,6 +312,8 @@
                     DockPanel.Dock="Right"
                     Width="100"
                     Padding="8, 4"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource ThemeAccentLowBrush}"
                     Background="{DynamicResource ThemeAccentBrush}"
                     Command="{Binding NextFormStepCommand}"
                     HorizontalAlignment="Right" VerticalAlignment="Bottom">
@@ -365,6 +367,8 @@
                 <Button
                     ui:Translator.Key="ONB_ALL_SET_BTN"
                     Background="{DynamicResource ThemeAccentBrush}"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource ThemeAccentLowBrush}"
                     Command="{Binding Finish, RelativeSource={RelativeSource AncestorType=dialogs:OnboardingDialog, Mode=FindAncestor}}"
                     />
             </StackPanel>
