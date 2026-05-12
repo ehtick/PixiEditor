@@ -179,7 +179,8 @@ internal class ExtensionManagerViewModel : ViewModelBase
                         Author = ext.ProductData.Author,
                         HideAddToLibrary = true,
                         IsBundle = ext.ProductData.IsBundle,
-                        Body = ext.ProductData.Description
+                        Body = ext.ProductData.Description,
+                        Versions = new List<ExtensionVersion>() { ext.ProductData.LatestVersion != null ? new ExtensionVersion() { Version = ext.ProductData.LatestVersion } : null }
                     }, this, 1, "PLN", false);
 
                 SelectExtension(created);
