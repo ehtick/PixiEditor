@@ -71,7 +71,7 @@ internal abstract class Toolbar : ObservableObject, IToolbar
             var first = SharedSettings.FirstOrDefault(x => x.Name == Settings[i].Name);
             if (first is { IsProtected: false })
             {
-                SharedSettings.First(x => x.Name == Settings[i].Name).UserValue = Settings[i].UserValue;
+                first.UserValue = Settings[i].UserValue;
             }
             else
             {
