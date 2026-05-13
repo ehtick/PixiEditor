@@ -401,9 +401,6 @@ internal class CombineStructureMembersOnto_Change : Change
             return new LayerImageArea_ChangeInfo(targetLayerGuid, new AffectedArea(new HashSet<VecI>()));
         }
 
-        if (toDrawOnImage is null)
-            throw new InvalidOperationException("Layer image not found");
-
         toDrawOnImage.EnqueueClear();
 
         CommittedChunkStorage? storedChunks = originalChunks[frame];
