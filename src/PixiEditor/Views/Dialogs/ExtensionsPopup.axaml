@@ -395,7 +395,7 @@
                         localization:Translator.Key="{Binding AvailableErrorMessage}" />
 
                     <ScrollViewer IsVisible="{Binding IsListVisible}">
-                        <StackPanel Margin="24" Spacing="24">
+                        <StackPanel Margin="12" Spacing="24">
                             <extensions:HighlightedExtensionCard
                                 IsVisible="{Binding !!DataContext.FirstHighlightedExtension, RelativeSource={RelativeSource AncestorType=dialogs:ExtensionsPopup}}"
                                 SelectCommand="{Binding DataContext.SelectExtensionCommand, RelativeSource={RelativeSource AncestorType=dialogs:ExtensionsPopup, Mode=FindAncestor}}"
@@ -445,17 +445,16 @@
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
                             </StackPanel>
-                                <TextBlock Classes="subtext" HorizontalAlignment="Center"
-                                           localization:Translator.Key="EXTENSIONS_INFO">
+                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap">
+                                    <TextBlock Classes="subtext" localization:Translator.Key="EXTENSIONS_INFO"/>
                                     <TextBlock localization:Translator.Key="CLICK_HERE_TO_READ_MORE"
-                                               Margin="4, 0, 0, -3"
                                                ui:Hyperlink.Url="https://forum.pixieditor.net/t/extension-browser-beta/567" />
                                 </TextBlock>
                         </StackPanel>
                     </ScrollViewer>
                 </Panel>
             </Panel>
-            <Panel HorizontalAlignment="Center" Grid.Row="2" IsVisible="{Binding ShowOwnedTab}">
+            <Panel HorizontalAlignment="Stretch" Grid.Row="2" IsVisible="{Binding ShowOwnedTab}">
                 <ScrollViewer>
                     <Grid>
                         <ItemsControl ItemsSource="{Binding OwnedExtensions}">
