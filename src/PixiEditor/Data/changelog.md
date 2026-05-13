@@ -1,4 +1,4 @@
-# 2.1.1.3
+# 2.1.1.4
 
 Date: `12.05.2026`
 
@@ -32,4 +32,5 @@ Date: `12.05.2026`
 - Fixed invalid previews for some nodes
 - Fixed a crash when trying to open .svg file as reference layer
 - Fixed non-scrollable tools picker
+- Fixed a bug that caused some tools to become the pen tool with Shared Toolbar option enabled
 - As always, fixed various crashes
